@@ -114,7 +114,7 @@ $ P(A|B) P(B) =  P(A inter B) = P(B|A)P(A) $
     全事象$Omega$が排反な事象$A_1, dots ,A_k$の和で表される場合 ($Omega = A_1 union dots union A_k, A_i inter A_j = nothing$)
     
     $
-    P(A_i|B) = (P(B|A_i) P(A_i)) / (sum_(j=1) ^k P(B|A_j) P(A_j)) 
+    P(A_i|B) = (P(B|A_i) P(A_i)) / (limits(sum)_(j=1) ^k P(B|A_j) P(A_j)) 
     $
 ])
 
