@@ -113,3 +113,78 @@ $によって求まる.
 $Y_1 ~ B i n(n_1,p),Y_2~B i n(n_2,p)$で$Y_1,Y_2$が独立ならば$Y_1 + Y_2 ~ B i n(n_1 + n_2,p)$となる. 
 
 これは$Y_1 + Y_2$の確率母関数が$E[s^(Y_1 + Y_2)] = E[s^(Y_1)]E[s^(Y_2)] = (p s + q)^(n_1 +n_2)$となり$B i n(n_1 + n_2,p)$の確率母関数に一致することからわかる.
+
+== 超幾何分布
+
+総数$N$,当たりの数が$M$の抽選を$n$回行い当たりの数を確率変数$X$で表現することを考える.
+$n = 1$の場合$B i n(1,N/M)$のベルヌーイ分布となることがわかる.
+
+$n eq.not 1$の場合復元抽出なら二項分布$B i n(n,N/M)$となる.
+非復元抽出の場合の$X$の分布を*超幾何分布*といい,$H G(N,M,n)$で表す.
+確率変数は
+$
+P(X = x) = (binom(M,x) binom(N-M,n-x)) / binom(N,n) 
+$
+となる.
+分母は$N$個のなかから$n$個引くときの組み合わせの総数,分子は$M$個の当たりから$x$個引く組み合わせと$N-M$個の外れから$n-x$個引く組み合わせの積である.
+
+この確率関数において$M/N,n$を一定の状態で$N arrow infinity$とすると二項分布に収束する.
+
+#v(2em)
+
+証明
+$
+P(X =x) &= (binom(M,x) binom(N-M,n-x)) / binom(N,n) \
+&= M! /(x! (M-x)!) times (N-M)!/((n-x)!{N-M - (n-x)}!)  times (n!(N-n)!)/ N!\
+&= binom(n,x) M! /(M-x)! times (N-M)!/{N-M - (n-x)}!  times (N-n)!/ N\
+&= binom(n,x) times (M dots (M-x + 1) times (N-M)dots {N-M-(n-x) + 1}) /( N dots (N - n + 1))\
+&= binom(n,x) times (M / N dots (M/ N-x/N + 1/N) times (1-M/N)dots {1-M/N-(n/N-x/N) + 1/N}) /( 1 dots (1 - n/N + 1/N))\
+N arrow infinity &= binom(n,x) (M / N) ^ x (1-M/N) ^ (1-x)\
+$
+
+$M/N$を$p$と置くとこれは$B i n(n,p)$の確率関数となる.$qed$
+
+$H G(N,M,n)$の期待値と分散は
+$
+E[Y] = n M/N,#h(2em)V[Y] = n M/N (1-M/N) times (N-n)/(N-1)
+$
+
+導出
+
+$X = X_1 + X_2 + dots X_n$とする.
+$X_i (1<=i<=n)$は$i$回目の抽選で当たりが出れば$1$,外れが出れば$0$となる.
+$E[X] = E[X_1 + X_2 + dots + X_n] = E[X_1] + E[X_2] + dots + E[X_n]$であり各$X_i$において当たりが出る確率はすべて等しく$M/N$である.
+$E[X_i] = M/N$となるため$E[X] = n M/N$である.
+
+$
+V[X] &= E[X^2] -E[X]^2\ 
+&= E[X(X-1)] - E[X]^2 + E[X]
+$
+
+$E[X(X-1)]$について考える.
+$
+X^2 &= (limits(sum)_(i=1) ^n X_i) (limits(sum)_(j=1) ^n X_j)\
+&= limits(sum)_(i=1) ^n X_i^2 + limits(sum)_(i eq.not j) X_i X_j\
+$
+$X_i =0$または$1$なので$X_i^2 = X_i$
+よって
+$
+E[X(X-1)] = limits(sum)_(i eq.not j) E[X_i X_j]
+$
+
+$E[X_i X_j]$は「$i$回目も$j$回目も当たりを引く確率」なので
+$
+E[X_i X_j] &= P(X_i = 1) P(X_j = 1|X_i = 1)\
+&= M/N (M-1) /(N-1)
+$
+
+$i eq.not j$は異なる$i,j$の選び方なので
+$
+E[X(X-1)] &= n(n-1)  M/N (M-1) /(N-1)
+$
+
+以上より
+$
+V[X] &= n(n-1)  M/N (M-1) /(N-1) - (n M/N)^2 + n M/N\
+&= n M/N (1-M/N) times (N-n)/(N-1)
+$
