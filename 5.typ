@@ -211,7 +211,7 @@ $
 $
 P(X = x) &= binom(n,x)p^x (1-p)^(n-x)\
 &=  binom(n,x) (lambda/n)^x (1-lambda/n)^(n-x)\
-&= 1/x! (n(n-1) dots (n-y + 1))/n lambda^x (1-lambda/n)^(n-x)\
+&= 1/x! (n(n-1) dots (n - x + 1))/n lambda^x (1-lambda/n)^(n-x)\
 &= lambda^x / x! e^(-lambda) (n arrow infinity)
 $
 
@@ -219,8 +219,8 @@ $
 
 ポアソン分布の確率母関数は
 $
-G[s] &= E[s^Y]\
-&= e^(-lambda) limits(sum)_(x=0) ^ infinity (lambda s)^y/ y!\
+G[s] &= E[s^X]\
+&= e^(-lambda) limits(sum)_(x=0) ^ infinity (lambda s)^x/ x!\
 &= e^(lambda (s-1))
 $
 
@@ -236,7 +236,7 @@ E[X] = lambda,#h(2em) V[X] = lambda
 $
 である.
 
-ポアソン分布にも二項分布と同様の再生性がある.($Y_1 ~ P o(lambda_1) ,Y_2~P o(lambda_2)$で$Y_1,Y_2$が独立なとき$Y_1 + Y_2 ~ P o(lambda_1) + P o(lambda_2)$)
+ポアソン分布にも二項分布と同様の再生性がある.($Y_1 ~ P o(lambda_1) ,Y_2~P o(lambda_2)$で$Y_1,Y_2$が独立なとき$Y_1 + Y_2 ~ P o(lambda_1 + lambda_2)$)
 
 == 幾何分布
 
@@ -295,3 +295,5 @@ P(X >= t_1 + t_2|X>=t_1) &= P(X>=t_1 + t_2) / P(X>=t_1)\
 #h(2em)
 qed
 $
+
+
