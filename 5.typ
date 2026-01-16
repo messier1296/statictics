@@ -188,3 +188,53 @@ $
 V[X] &= n(n-1)  M/N (M-1) /(N-1) - (n M/N)^2 + n M/N\
 &= n M/N (1-M/N) times (N-n)/(N-1)
 $
+
+== ポアソン分布
+
+二項分布を用いて以下の事象を考えるとする.
+
+- ex) 一日にある地点で事故が起こる確率を$p$とする.この地点で一年間に事故が起こる回数$x$の確率変数を求めたい.(一日に事故が起こるのは一回までである.)
+
+この事象について素朴に考えると以下のような確率関数になる.
+$
+P(X = x) = binom(365,x) p^x (1-p) ^(365-x)
+$
+
+
+
+現実には1日に2回以上事故が起きる可能性もあり、時間は連続的である.
+より厳密に議論するために、期間を1日単位ではなく、時間、分、秒……と無限に細かく分割すること（$n arrow infinity$）を考える.
+
+このとき、分割を細かくしても1年間の平均事故発生件数は変わらない.
+二項分布 $B i n(n,p)$ の期待値は $n p$ であるため,この期待値 $n p = lambda$ を一定に保った状態で $n arrow infinity$ （それに伴い $p = lambda/n arrow 0$）とする極限を考えればよい.
+
+$
+P(X = x) &= binom(n,x)p^x (1-p)^(n-x)\
+&=  binom(n,x) (lambda/n)^x (1-lambda/n)^(n-x)\
+&= 1/x! (n(n-1) dots (n-y + 1))/n lambda^x (1-lambda/n)^(n-x)\
+&= lambda^x / x! e^(-lambda) (n arrow infinity)
+$
+
+こうして得られた$X$の分布は*ポアソン分布*$P o(lambda)$である.
+
+ポアソン分布の確率母関数は
+$
+G[s] &= E[s^Y]\
+&= e^(-lambda) limits(sum)_(x=0) ^ infinity (lambda s)^y/ y!\
+&= e^(lambda (s-1))
+$
+
+である.
+
+$
+G'(s) = lambda e^lambda(s-1),#h(3em),G''(s) = lambda ^2 e^lambda(s-1)
+$
+
+を用いるとポアソン分布の期待値と分散は
+$
+E[X] = lambda,#h(2em) V[X] = lambda 
+$
+である.
+
+ポアソン分布にも二項分布と同様の再生性がある.($Y_1 ~ P o(lambda_1) ,Y_2~P o(lambda_2)$で$Y_1,Y_2$が独立なとき$Y_1 + Y_2 ~ P o(lambda_1) + P o(lambda_2)$)
+
