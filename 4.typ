@@ -50,19 +50,19 @@
 
 連続確率変数$X$の確率密度関数を$f(x)$とする.ここで$X$と1対1対応する新たな確率変数$Y = g(X)$について考える.ただし$g(X)$は微分可能で単調増加する関数とする.
 $
-P(Y <= y) &= P(g(X) <= y)\
-&= P(X <= g^(-1) (y))
+  P(Y <= y) & = P(g(X) <= y) \
+            & = P(X <= g^(-1) (y))
 $
 左辺は$Y$の累積分布関数,右辺は$X$の累積分布関数なので
 $
-F_Y (y) = F_X (g^(-1) (y))
+  F_Y (y) = F_X (g^(-1) (y))
 $
 両辺を微分して
 $
-f_Y (y) &= d/ (d y) F_X (g^(-1) (y))\
-&= f_X (g^(-1) (y)) d/(d y)g^(-1) (y)\
-&= (f_X (g^(-1) (y)))/ (g'(x)) \
-&= (f_X (g^(-1) (y))) / abs(g'(g^(-1) (y))) "  (because " x = g^(-1) (y)")"
+  f_Y (y) & = d/ (d y) F_X (g^(-1) (y)) \
+          & = f_X (g^(-1) (y)) d/(d y)g^(-1) (y) \
+          & = (f_X (g^(-1) (y)))/ (g'(x)) \
+          & = (f_X (g^(-1) (y))) / abs(g'(g^(-1) (y))) "  (because " x = g^(-1) (y)")"
 $
 が得られた.単調減少の場合$g'(x) < 0$となるため、一般化して絶対値で表現されている.
 
@@ -70,11 +70,11 @@ $
 
 2変数$X,Y$の確率密度関数を$f(x,y)$とし,変数変換$(Z,W) = (u(X,Y),v(X,Y))$について考える.ただし逆変換$(X,Y) = (s(Z,W),t(Z,W))$が存在するものとする.この変換のヤコビアンは
 $
-J(z,w) = (partial (x,y) )/ partial(z,w) = det mat((partial s) / (partial z), (partial s) / (partial w);(partial t) / (partial z),(partial t) / (partial w))
+  J(z,w) = (partial (x,y) )/ partial(z, w) = det mat((partial s) / (partial z), (partial s) / (partial w); (partial t) / (partial z), (partial t) / (partial w))
 $
 と計算される.$(Z,W)$の確率密度関数は
 $
-f_(Z,W) (z,w) = f_(X,Y) (s(z,w),t(z,w)) abs(J(z,w)) 
+  f_(Z,W) (z,w) = f_(X,Y) (s(z,w),t(z,w)) abs(J(z,w))
 $
 として与えられる.
 
@@ -82,23 +82,23 @@ $
 == 確率変数の線形結合の分布
 #v(2em)
 
-2つの独立な確率変数$X,Y$についてその線形結合$a X + b Y$の分布について考える.$a X + b Y $のモーメント母関数$E[e^(theta(a X + b Y ))] = E[e^(theta a X)] E[e^(theta b Y)]$を計算し,既存の分布のモーメント母関数と一致するか調べる方法がある.しかしこの方法では導出されたモーメント母関数が未知の場合求めたい分布$a X +b Y$を求める事ができない.
+2つの独立な確率変数$X,Y$についてその線形結合$a X + b Y$の分布について考える.$a X + b Y$のモーメント母関数$E[e^(theta(a X + b Y))] = E[e^(theta a X)] E[e^(theta b Y)]$を計算し,既存の分布のモーメント母関数と一致するか調べる方法がある.しかしこの方法では導出されたモーメント母関数が未知の場合求めたい分布$a X +b Y$を求める事ができない.
 そこで先程の変数変換を用いて導出する事ができる.
 
 $Z = a X + b Y ,W = Y$とし$(Z,W)$の分布を考える.逆変換は$(X,Y) = ((Z - b W) / a,W)$でありヤコビアンは
 $
-J(X,Y) = abs(mat((partial Z)/(partial X),(partial Z) / (partial Y) ; (partial W) / (partial X),(partial W)/ (partial Y))) = abs(mat(a,b;0,1)) = a
+  J(X,Y) = abs(mat((partial Z)/(partial X), (partial Z) / (partial Y); (partial W) / (partial X), (partial W)/ (partial Y))) = abs(mat(a, b; 0, 1)) = a
 $
 となる.
 
 $(Z,W)$の確率密度関数は$(X,Y)$が独立なので
 $
-f_(Z,W) (z,w) =(f_X ((z-b w)/a) f_Y (w) )/ abs(a)
+  f_(Z,W) (z,w) =(f_X ((z-b w)/a) f_Y (w) )/ abs(a)
 $
 になる.
 $W$について積分することで$Z$の確率密度関数が得られる
 $
-f_Z = 1 / abs(a) integral_(-infinity) ^ infinity f_X ((z-b w)/a) f_Y (w)  d w
+  f_Z = 1 / abs(a) integral_(-infinity)^infinity f_X ((z-b w)/a) f_Y (w) d w
 $
 
 #cut()
@@ -112,7 +112,7 @@ $
 
 べき乗変換と対数変換をひとまとめにした変換として*Box-Cox変換*がある.パラメータ$lambda$に対して
 $
-y(lambda) = cases((x^lambda - 1 )/lambda (lambda eq.not 0),log x (lambda = 0))
+  y(lambda) = cases((x^lambda - 1 )/lambda (lambda eq.not 0), log x (lambda = 0))
 $
 
 という変換である.$lambda eq.not 0$の場合$x = 1$周辺を$0$付近にして$x = 1$付近で微分が1になり,$lambda = 0$の場合対数変換と滑らかにつながり微分可能なような変換となっている.最も正規分布に当てはまりのよい$lambda$を探索することでデータにフィットする変換を探索することができる.
@@ -120,7 +120,7 @@ $
 確率$p$のような$0$から$1$の値しかとらないものを$-infinity$から$infinity$を取る値に変換したいときは*ロジット変換*$log (p)/(1-p)$を行う.ロジット変換を行った分布に対して線形回帰を行い予測した値を逆変換することで確率に対して回帰を行うという手法がロジスティック回帰である.これは$p$を$a + b x$の*ロジスティック変換* で表すことと同値である.
 
 $
-1/ (1 + e^(-(a + b x)))
+  1/ (1 + e^(-(a + b x)))
 $
 
-$0$から$1$までの範囲しか取らないものを$-infinity$から$infinity$を取る値に変換する方法として*プロビット変換*がある.プロビット変換は標準正規分布の累積分布関数$Phi(x) = integral_(-infinity) ^ x 1/ sqrt(2 pi) exp(-t^2/2) d t$の逆関数$Phi^(-1)(x) $によって変換する方法である.
+$0$から$1$までの範囲しか取らないものを$-infinity$から$infinity$を取る値に変換する方法として*プロビット変換*がある.プロビット変換は標準正規分布の累積分布関数$Phi(x) = integral_(-infinity)^x 1/ sqrt(2 pi) exp(-t^2/2) d t$の逆関数$Phi^(-1)(x)$によって変換する方法である.

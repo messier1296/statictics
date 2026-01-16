@@ -123,46 +123,48 @@ $
 
 期待値の性質
 $
-E[a X + b Y + c] = a E[X] + b E[Y] + c \
+  E[a X + b Y + c] = a E[X] + b E[Y] + c \
 $
 また$X,Y$が独立のとき
 $
-E[X Y] = E[X] E[Y]
+  E[X Y] = E[X] E[Y]
 $
 
 分散の性質
 
 $
-V[a X + b] = a^2 V[X], V[X plus.minus Y ] = V[X] + V[Y] plus.minus 2 op("Cov")[X,Y]
+  V[a X + b] = a^2 V[X], V[X plus.minus Y ] = V[X] + V[Y] plus.minus 2 op("Cov")[X,Y]
 $
 
 条件付き期待値の性質
 $
-E[E[X|Y]] = E[X]
+  E[E[X|Y]] = E[X]
 $
 
 $
-V[X] = E[V[X|Y]] + V[E[X|Y]]
+  V[X] = E[V[X|Y]] + V[E[X|Y]]
 $
 
 == データの特性値
 
-これまで平均では$bar(x) = 1/n limits(sum)_(i=1) ^n x_i$という算術平均を用いてきたが平均にはこれ以外にもある.
+これまで平均では$bar(x) = 1/n limits(sum)_(i=1)^n x_i$という算術平均を用いてきたが平均にはこれ以外にもある.
 
-*加重平均*は重み$w_1 dots w_n (w_i > 0,w_1 + dots w_n = 1)$に対する$x_1 dots x_n$の加重平均は$limits(sum)_(i=1) ^ n w_i x_i$として定義される.これは観測値x_iが割合w_iで得られる場合の全平均を計算したものである.
+*加重平均*は重み$w_1 dots w_n (w_i > 0,w_1 + dots w_n = 1)$に対する$x_1 dots x_n$の加重平均は$limits(sum)_(i=1)^n w_i x_i$として定義される.これは観測値x_iが割合w_iで得られる場合の全平均を計算したものである.
 
 *幾何平均*は$x_1 dots x_n (x_i > 0)$に対して$(x_1 times dots times x_n)^(1/n)$として定義される.
 
-*調和平均*は$x_1 dots x_n (x_i > 0)$に対して$1/x_1 + dots + 1/x_n$の平均$1/n limits(sum)_(i=1) ^ n (1/x_i)$の逆数として定義される
+*調和平均*は$x_1 dots x_n (x_i > 0)$に対して$1/x_1 + dots + 1/x_n$の平均$1/n limits(sum)_(i=1)^n (1/x_i)$の逆数として定義される
 
 = 平均ベクトルと分散共分散行列
 
-$bold(X) = (X_1 dots X_k) ^ top$をk次元確率ベクトルとする.$mu_i = E[X_i]$を要素とするk次元ベクトル$bold(mu) = (mu_1 dots mu_n)^top$を*期待値ベクトル*あるいは*平均ベクトル*と呼ぶ.また$X_i$と$X_j$の共分散$sigma_(i j) = E[(X_i - E[X_i])(X_j - E[X_j])]$を$(i,j)$要素とする行列
+$bold(X) = (X_1 dots X_k)^top$をk次元確率ベクトルとする.$mu_i = E[X_i]$を要素とするk次元ベクトル$bold(mu) = (mu_1 dots mu_n)^top$を*期待値ベクトル*あるいは*平均ベクトル*と呼ぶ.また$X_i$と$X_j$の共分散$sigma_(i j) = E[(X_i - E[X_i])(X_j - E[X_j])]$を$(i,j)$要素とする行列
 $
-Sigma = 
-mat(sigma_(1 1) ,sigma_(1 2) ,dots ,sigma_(1 k);
-sigma_(2 1) , sigma_(2 2), dots , sigma_(2 k);
-dots.v,dots.v, dots.down,dots.v;
-sigma_(k 1), sigma_(k 2) ,dots,sigma_(k k);)
+  Sigma =
+  mat(
+    sigma_(1 1), sigma_(1 2), dots, sigma_(1 k);
+    sigma_(2 1), sigma_(2 2), dots, sigma_(2 k);
+    dots.v, dots.v, dots.down, dots.v;
+    sigma_(k 1), sigma_(k 2), dots, sigma_(k k);
+  )
 $
 を*分散共分散行列*とよぶ.分散共分散行列の対角成分は$X_i$の共分散である.同様に対角要素を1として$X_i ,X_j$の相関係数$rho_(i j)$を$(i,j)$要素とする行列を*相関係数行列*あるいは*相関行列*と呼ぶ.
